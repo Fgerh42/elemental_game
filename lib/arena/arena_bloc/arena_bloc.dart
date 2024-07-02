@@ -20,8 +20,8 @@ List<Spell> buildAttunements(){
   final list = [
     Spell(id: "101",name: "Ventus Attunement",isAttunement: true,baseElement: BaseElement.AIR, manaCost: 1),
     Spell(id: "102",name: "Aqua Attunement",isAttunement: true,baseElement: BaseElement.WATER, manaCost: 1),
-    Spell(id: "103",name: "Ignis Attunement",isAttunement: true,baseElement: BaseElement.FIRE, manaCost: 1),
-    Spell(id: "104",name: "Terra Attunement",isAttunement: true,baseElement: BaseElement.EARTH, manaCost: 1),
+    // Spell(id: "103",name: "Ignis Attunement",isAttunement: true,baseElement: BaseElement.FIRE, manaCost: 1),
+    // Spell(id: "104",name: "Terra Attunement",isAttunement: true,baseElement: BaseElement.EARTH, manaCost: 1),
   ];
   list.shuffle();
 

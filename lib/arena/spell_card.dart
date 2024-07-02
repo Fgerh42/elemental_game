@@ -99,14 +99,17 @@ class SpellCard extends StatelessWidget {
 
                 int i = 0;
                 while(i<(spell.animationFrames??[]).length){
+
+                  final frame = Transform.flip(flipX: !state.player.facingForward,child:spell.animationFrames![i]);
+                  final pos = spell.posByFame!(state.player.pos,context,i,state.player.facingForward);
                   frames.add(
                       CustomAnimationFrame(
-                        frame: spell.animationFrames![i],
+                        frame: frame,
                         frameDuration: Duration(milliseconds: 10),
-                        left: spell.posByFame!(state.player.pos,context,i)["left"]??0.0,
-                        right: spell.posByFame!(state.player.pos,context,i)["right"]??0.0,
-                        top:  spell.posByFame!(state.player.pos,context,i)["top"]??0.0,
-                        bottom: spell.posByFame!(state.player.pos,context,i)["bottom"]??0.0,
+                        left: pos["left"]??0.0,
+                        right:pos["right"]??0.0,
+                        top:  pos["top"]??0.0,
+                        bottom: pos["bottom"]??0.0,
                       )
                   );
                   i++;

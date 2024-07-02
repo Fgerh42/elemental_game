@@ -296,19 +296,19 @@ class PirateSpellList {
       rangeType: RangeType.SHORT_LINE,
       status: Status.BURNING,
       fg_image: Image.asset("spells/fire_ball_fg.png"),
-      posByFame: (int player_pos,BuildContext context,int index){
+      posByFame: (int player_pos,BuildContext context,int index, bool facingForward){
           final height = MediaQuery.of(context).size.height;
           final width = MediaQuery.of(context).size.width;
 
-          final left = width*0.33;
-          final right = width*0.57;
+          final left = width*0.29;
+          final right = width*0.6;
           final top = height*0.37;
           final bottom = height*0.37;
 
           int i = 1;
           int col = 1;
 
-          while(i<19){
+          while(i<7){
             if(player_pos==i||player_pos-6==i||player_pos-12==i){
               col = i;
             }
@@ -317,15 +317,15 @@ class PirateSpellList {
 
           int lane = player_pos>12?3:player_pos>6?2:1;
 
-          double h_mod = (col-2)*0.005*width;
+          double h_mod = (col-2)*0.12*width;
 
           double v_mod = (lane-2)*0.16*height;
 
 
           return {
-            "left":left + h_mod + (width*0.02*index),
+            "left":left + h_mod + (facingForward?(width*0.03*index):-(width*0.03*index)),
             "top":top + v_mod,
-            "right":right - h_mod - (width*0.02*index),
+            "right":right - h_mod - (facingForward?(width*0.03*index):-(width*0.03*index)),
             "bottom":bottom - v_mod
           };
       },
@@ -376,34 +376,40 @@ class PirateSpellList {
               status: Status.CORRODED,
               fg_image: Image.asset("spells/corrosive_sphere_fg.png"),
               isSubSpell:true,
-              posByFame: (int player_pos,BuildContext context,int index){
+              posByFame: (int player_pos,BuildContext context,int index,facingForward){
                 final height = MediaQuery.of(context).size.height;
                 final width = MediaQuery.of(context).size.width;
 
-
-                final left = width*0.33;
-                final right = width*0.57;
+                final left = width*0.29;
+                final right = width*0.6;
                 final top = height*0.37;
                 final bottom = height*0.37;
 
+                int i = 1;
+                int col = 1;
 
-                double h_mod = player_pos ==1 ||player_pos == 4 || player_pos == 7?-(width*0.1):0.0;
-                h_mod = player_pos == 2 ||player_pos == 5 || player_pos == 8?0.0:h_mod;
-                h_mod = player_pos == 3 ||player_pos == 6 || player_pos == 9?(width*0.1):h_mod;
+                while(i<7){
+                  if(player_pos==i||player_pos-6==i||player_pos-12==i){
+                    col = i;
+                  }
+                  i++;
+                }
 
-                double v_mod = player_pos == 1 ||player_pos == 2 || player_pos == 3?-(height*0.13):0.0;
-                v_mod = player_pos == 4 ||player_pos == 5 || player_pos == 6?0.0:v_mod;
-                v_mod = player_pos == 7 ||player_pos == 8 || player_pos == 9?(height*0.13):v_mod;
+                int lane = player_pos>12?3:player_pos>6?2:1;
+
+                double h_mod = (col-2)*0.12*width;
+
+                double v_mod = (lane-2)*0.16*height;
 
 
                 return {
-                  "left":left + h_mod + (width*0.037*index),
+                  "left":left + h_mod + (facingForward?(width*0.03*index):-(width*0.03*index)),
                   "top":top + v_mod,
-                  "right":right - h_mod - (width*0.037*index),
+                  "right":right - h_mod - (facingForward?(width*0.03*index):-(width*0.03*index)),
                   "bottom":bottom - v_mod
                 };
               },
-              animationFrames: Helper.getFrames("corrosive_sphere_frame", 8),
+              animationFrames: Helper.getFrames("corrosive_sphere_frame", 12),
               subSpells: [
                 Spell(
                     id: "3-2-2-1",
@@ -438,30 +444,36 @@ class PirateSpellList {
               isSubSpell:true,
               rangeType: RangeType.SHORT_LINE,
               fg_image: Image.asset("spells/fire_ball_fg.png"),
-              posByFame: (int player_pos,BuildContext context,int index){
+              posByFame: (int player_pos,BuildContext context,int index, bool facingForward){
                 final height = MediaQuery.of(context).size.height;
                 final width = MediaQuery.of(context).size.width;
 
-
-                final left = width*0.33;
-                final right = width*0.57;
+                final left = width*0.29;
+                final right = width*0.6;
                 final top = height*0.37;
                 final bottom = height*0.37;
 
+                int i = 1;
+                int col = 1;
 
-                double h_mod = player_pos ==1 ||player_pos == 4 || player_pos == 7?-(width*0.1):0.0;
-                h_mod = player_pos == 2 ||player_pos == 5 || player_pos == 8?0.0:h_mod;
-                h_mod = player_pos == 3 ||player_pos == 6 || player_pos == 9?(width*0.1):h_mod;
+                while(i<7){
+                  if(player_pos==i||player_pos-6==i||player_pos-12==i){
+                    col = i;
+                  }
+                  i++;
+                }
 
-                double v_mod = player_pos == 1 ||player_pos == 2 || player_pos == 3?-(height*0.13):0.0;
-                v_mod = player_pos == 4 ||player_pos == 5 || player_pos == 6?0.0:v_mod;
-                v_mod = player_pos == 7 ||player_pos == 8 || player_pos == 9?(height*0.13):v_mod;
+                int lane = player_pos>12?3:player_pos>6?2:1;
+
+                double h_mod = (col-2)*0.12*width;
+
+                double v_mod = (lane-2)*0.16*height;
 
 
                 return {
-                  "left":left + h_mod + (width*0.02*index),
+                  "left":left + h_mod + (facingForward?(width*0.03*index):-(width*0.03*index)),
                   "top":top + v_mod,
-                  "right":right - h_mod - (width*0.02*index),
+                  "right":right - h_mod - (facingForward?(width*0.03*index):-(width*0.03*index)),
                   "bottom":bottom - v_mod
                 };
               },
